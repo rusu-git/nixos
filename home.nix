@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, quickshell, qml-niri, ... }:
 {
   home.username = "rusu";	home.homeDirectory = "/home/rusu";
   home.stateVersion = "26.05";
@@ -14,6 +14,7 @@
 	unrar
 	brightnessctl
 	localsend
+	(qml-niri.packages.${pkgs.system}.quickshell)
 	jmtpfs #for switch`s MTP
   ];
 
@@ -46,11 +47,5 @@
 	shellInit = ''
 		set fish_greeting
         '';
-  };
-  
-  programs.noctalia = {
-	enable = true;
-	systemd.enable = true;
-	settings = { };
-    };
+  };  
 }

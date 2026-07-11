@@ -6,12 +6,17 @@
 		url = "github:nix-community/home-manager/release-26.05";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
-	noctalia = {
-		url = "github:noctalia-dev/noctalia";
-      		inputs.nixpkgs.follows = "nixpkgs";
-    	};
+    quickshell = {
+    	url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    	inputs.nixpkgs.follows = "nixpkgs";
+    };
+    qml-niri = {
+    	url = "github:imiric/qml-niri/main";
+    	inputs.nixpkgs.follows = "nixpkgs";
+    	inputs.quickshell.follows = "quickshell";
+    };
  };
- outputs = {self, nixpkgs, home-manager, noctalia, ...}:
+ outputs = {self, nixpkgs, home-manager, quickshell, qml-niri, ...}:
  let
 	lib = nixpkgs.lib;
 	system = "x86_64-linux";
@@ -28,7 +33,8 @@
 			inherit pkgs;
 			modules = [
 				./home.nix
-				noctalia.homeModules.default
+				{ _module.args.quickshell = quickshell; }
+				{ _module.args.qml-niri = qml-niri; }
 			];
 		};
 	};
