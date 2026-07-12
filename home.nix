@@ -1,4 +1,4 @@
-{ config, pkgs, quickshell, qml-niri, ... }:
+{ config, pkgs, ... }:
 {
   home.username = "rusu";	home.homeDirectory = "/home/rusu";
   home.stateVersion = "26.05";
@@ -7,6 +7,7 @@
   
   home.packages = with pkgs; [
 	fastfetch
+	quickshell
 	kitty
 	firefox
 	micro
@@ -14,7 +15,6 @@
 	unrar
 	brightnessctl
 	localsend
-	(qml-niri.packages.${pkgs.system}.quickshell)
 	jmtpfs #for switch`s MTP
   ];
 
@@ -28,6 +28,12 @@
 
   programs.home-manager.enable = true;
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+	systemd.enable = false;
+    xwayland.enable = true;
+  };
+	
   programs.git = {
   	enable = true;
   	settings = {

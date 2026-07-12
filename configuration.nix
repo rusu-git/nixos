@@ -55,8 +55,8 @@
   environment.shells = with pkgs; [fish];
   users.defaultUserShell = pkgs.fish;
   
-  programs.fish.enable = true; 
-  programs.niri.enable = true;
+  programs.fish.enable = true;
+  programs.hyprland.withUWSM = true; 
   programs.steam.enable = true;
   programs.gamemode.enable = true;  
   programs.amnezia-vpn.enable = true;
@@ -84,10 +84,10 @@
       };
 };
   services.greetd = {
-  	enable = true;
+ 	enable = true;
   	settings = {
-		default_session = {
-			command = "${config.programs.niri.package}/bin/niri-session";
+	default_session = {
+			command = "start-hyprland";
 			user = "rusu";
 		};
 	};

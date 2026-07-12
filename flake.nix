@@ -10,13 +10,8 @@
     	url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     	inputs.nixpkgs.follows = "nixpkgs";
     };
-    qml-niri = {
-    	url = "github:imiric/qml-niri/main";
-    	inputs.nixpkgs.follows = "nixpkgs";
-    	inputs.quickshell.follows = "quickshell";
-    };
  };
- outputs = {self, nixpkgs, home-manager, quickshell, qml-niri, ...}:
+ outputs = {self, nixpkgs, home-manager, quickshell,  ...}:
  let
 	lib = nixpkgs.lib;
 	system = "x86_64-linux";
@@ -34,7 +29,6 @@
 			modules = [
 				./home.nix
 				{ _module.args.quickshell = quickshell; }
-				{ _module.args.qml-niri = qml-niri; }
 			];
 		};
 	};
