@@ -11,7 +11,6 @@
 	kitty
 	helix
 	firefox
-	micro
 	kdePackages.dolphin
 	unrar
 	brightnessctl
