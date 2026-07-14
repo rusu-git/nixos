@@ -9,17 +9,26 @@
 	fastfetch
 	quickshell
 	kitty
+	helix
 	firefox
 	micro
 	kdePackages.dolphin
 	unrar
 	brightnessctl
 	localsend
+	adwaita-icon-theme
 	jmtpfs #for switch`s MTP
   ];
 
+#home.pointerCursor = {
+#    name = "Adwaita";
+#    package = pkgs.adwaita-icon-theme;
+#    size = 24;
+#    gtk.enable = true;
+#  };
+
   home.file = {
-    ".config/niri/config.kdl".source = ./niri.kdl;
+#    ".config/niri/config.kdl".source = ./niri.kdl;
   };
 
   home.sessionVariables = {
